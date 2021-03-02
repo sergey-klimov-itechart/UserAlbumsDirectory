@@ -1,0 +1,27 @@
+﻿
+@model UserDirectory.Models.ViewModels.AlbumUserViewModel
+
+<div class="search-result-item">
+    <div class="search-result-inner">
+        <div class="search-result-img">
+            <img src="@Model.ThumbnailUrl" />
+        </div>
+        <h4 class="search-result-title">
+            @Html.ActionLink(@Model.AlbumTitle, "List", "Photo", new { id = @Model.Id, returnUrl = @ViewContext.HttpContext.Request.PathAndQuery() })
+        </h4>
+        <div class="search-result-user">
+            <span>
+                @Html.ActionLink(@Model.UserName, "Index", "User", new { id = @Model.UserId, returnUrl = @ViewContext.HttpContext.Request.PathAndQuery() })
+            </span>
+            <span>
+                @Model.Email
+            </span>
+            <span>
+                @Model.Phone
+            </span>
+        </div>
+        <div class="search-result-descr">
+            @await Html.PartialAsync("UserAddress", @Model.Address)
+        </div>
+    </div>
+</div>

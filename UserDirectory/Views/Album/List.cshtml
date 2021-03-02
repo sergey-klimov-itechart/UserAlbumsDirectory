@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@model UserDirectory.Models.ViewModels.AlbumsViewModel;
+
+<form asp-controller="Album" asp-action="List" method="get">
+    <p>
+        Search by Title, Name: <input type="text" name="SearchString" value="@ViewBag.searchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+<div class="search-result-list">
+    @foreach (var p in Model.AlbumsUserViewModel)
+    {
+        @await Html.PartialAsync("AlbumUser", p)
+    }
+</div>
+<div class="pagination-wrapper">
+    @for (int i = 1; i <= Model.PagingData.TotalPages; i++)
+    {<div class="pagination-item">
+            @if (@Model.PagingData.CurrentPage == i)
+            {
+                <a class="pagination-link active" asp-action="List" asp-route-pageNumber=@i asp-route-searchString="@ViewBag.searchString">@i</a>
+            }
+            else
+            {
+                <a class="pagination-link" asp-action="List" asp-route-pageNumber=@i asp-route-searchString="@ViewBag.searchString">@i</a>
+            }
+        </div>
+    }
+</div>

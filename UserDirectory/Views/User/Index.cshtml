@@ -1,0 +1,17 @@
+﻿@model UserInfoViewModel
+
+<div class="user-info">@Html.DisplayFor(t => t.UserInfo)</div>
+<div class="user-company">@Html.DisplayFor(t => t.UserInfo.Company)</div>
+<div class="user-adress">@await Html.PartialAsync("UserAddress", @Model.UserInfo.Address)</div>
+
+@foreach (var p in Model.Posts)
+{
+    <div class="post-item">
+        <h3>@p.Title</h3>
+        <div class="post-descr">@p.Body</div>
+    </div>
+}
+@if (!string.IsNullOrEmpty(@Model.ReturnUrl))
+{
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Go to Albums list</a>
+}

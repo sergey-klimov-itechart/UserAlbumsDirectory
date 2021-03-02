@@ -1,0 +1,18 @@
+﻿@model PhotoAlbumViewModel
+
+<h3>
+    @Model.AlbumTitle
+</h3>
+<div class="album-list">
+    @foreach (var p in Model.Photos)
+    {
+        <div class="album-item">
+            <img src="@p.ThumbnailUrl" />
+            <div class="album-descr">@p.Title</div>
+        </div>
+    }
+</div>
+@if (!string.IsNullOrEmpty(@Model.ReturnUrl))
+{
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Go to Albums list</a>
+}

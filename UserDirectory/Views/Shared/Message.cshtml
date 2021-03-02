@@ -1,0 +1,16 @@
+﻿@{ Layout = null; }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Filters</title>
+    <link asp-href-include="lib/bootstrap/dist/css/*.min.css" rel="stylesheet" />
+</head>
+<body class="m-1 p-1">
+@if (Model is string) {
+    <h3 class="text-danger">Error.</h3>
+    <h4 class="text-danger">@Model</h4>
+}
+</body>
+</html>
